@@ -1,0 +1,85 @@
+ run_analysis.R - contains scripts related to data preparation done using given  instructions in "Getting and Cleanning Data" course project.
+
+
+
+dataset - downloaded dataset is  extracted under a folder called UCI HAR Dataset
+
+
+
+variables
+--------
+
+
+
+features <- features.txt ( 561 rows, 2 columns ) 
+List of all features.
+
+
+activities <- activity_labels.txt ( 6 rows, 2 columns ) 
+List of activities considered
+
+
+
+Test Data
+
+--------
+
+subject_test <- test/subject_test.txt ( 2947 rows, 1 column ) : contains test data of subjects
+
+x_test <- test/X_test.txt ( 2947 rows, 561 columns ) : contrains test data of features
+
+y_test <- test/y_test.txt ( 2947 rows, 1 columns ) : contains test data of activities
+
+
+
+Train Data
+
+---------
+
+subject_train <- train/subject_train.txt ( 7352 rows, 1 column ) : contains train data of subjects
+
+x_train <- train/x_train.txt ( 7352 rows, 561 columns ) : contrains train data of features
+
+y_train <- train/y_train.txt ( 7352 rows, 1 columns ) : contains train data of activities
+
+1. 
+
+Merges the training and the test sets to create one data set.
+-------------------------------------------------------------------
+
+
+
+merge_train <-  created by merging y_train,x_train and subject_train using cbind() function 
+
+merge_test <- created by merging y_test,x_test and subject_test using cbind() function 
+
+
+dataset1 <-  created by merging merge_train and merge_test using rbind() function
+
+
+
+2.Extracts only the measurements on the mean and standard deviation for each measurement.
+-----------------------------------------------------------------------------------------
+
+dataset2 <-  created by subsetting dataset, selecting only  subject, code and the measurements on the mean and standard deviation 
+
+
+
+3. Uses descriptive activity names to name the activities in the data set
+---------------------------------------------------------------------------
+All numbers in code column of the dataset2 replaced with corresponding activity taken from second column of the  activities variable
+
+
+
+4. Appropriately labels the data set with descriptive variable names
+-------------------------------------------------------------------
+
+assing variable names at begging
+
+
+5.From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
+----------------------------------------------------------------------------------------------------------------------
+
+tidy_data <- (180 rows, 88 columns) : created by sumarizing  dataset taking the means of each variable for each activity and each subject, after groupped by subject and activity.
+
+Finally tidy_data is exported tp tidy_data.txt file.
